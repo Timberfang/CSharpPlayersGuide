@@ -13,7 +13,8 @@ namespace LearningProgram.Solutions
     {
         static void Main(string[] args)
         {
-            Solution.TheDominionOfKings();
+            Solution.TheDefenseOfConsolas();
+            // Start on Level 9 of the book
         }
     }
 }
