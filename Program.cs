@@ -13,8 +13,8 @@ namespace LearningProgram.Solutions
     {
         static void Main(string[] args)
         {
-            Solution.Watchtower();
-            // Start on Level 9 of the book
+            Solution.BuyingInventory();
+            // Start on Level 11 of the book
         }
     }
 }
