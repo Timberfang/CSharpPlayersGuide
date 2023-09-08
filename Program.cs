@@ -13,7 +13,7 @@ namespace LearningProgram.Solutions
     {
         static void Main(string[] args)
         {
-            Solution.TheDefenseOfConsolas();
+            Solution.Watchtower();
             // Start on Level 9 of the book
         }
     }
