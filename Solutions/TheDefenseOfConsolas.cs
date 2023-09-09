@@ -16,12 +16,14 @@ namespace LearningProgram.Solutions
             int Row = Convert.ToInt32(Console.ReadLine());
             Console.Write("Quickly now, what's the target column? ");
             int Column = Convert.ToInt32(Console.ReadLine());
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.Write("Gather together! We must deploy as follows:\n");
             Console.Write($"First, to ({Row - 1}, {Column}),\n");
             Console.Write($"Next, to ({Row + 1}, {Column}),\n");
             Console.Write($"You there, to ({Row}, {Column - 1}),\n");
             Console.Write($"Finally, you go to ({Row}, {Column + 1})!\n");
             Console.Beep();
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }
