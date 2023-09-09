@@ -13,8 +13,8 @@ namespace LearningProgram.Solutions
     {
         static void Main(string[] args)
         {
-            Solution.TheMagicCannon();
-            // Start on Level 12 of the book
+            Solution.TheLawsOfFreach();
+            // Start on Level 13 of the book
         }
     }
 }
