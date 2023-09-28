@@ -68,12 +68,11 @@ namespace LearningProgram.Solutions
                 } // Game Continues
                 else if (ManticoreHP <= 0 && CityHP > 0) { Console.WriteLine("The Manticore is down! We won!"); } // Player 2 Wins
                 else if (ManticoreHP > 0 && CityHP <= 0) { Console.WriteLine("Oh no... EVERYONE, RUN WHILE YOU CAN! THE CITY IS FALLING!"); } // Player 2 Loses
-                else { Console.WriteLine("A victory, but at what cost? The Manticore is down, but our city..."); } // Both the city and the Manticore are at zero HP
+                else { Console.WriteLine("A victory, but at what cost? The Manticore is down, but our city..."); } // Both the city and the Manticore are at zero HP, and both sides lose
                 Console.ForegroundColor = ConsoleColor.White;
             }
             while (ManticoreHP > 0 && CityHP > 0);
         }
-
         public static int AskForNumberWithLimits(string text, int min, int max)
         {
             bool ValidChoice = false;
