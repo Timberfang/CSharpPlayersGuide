@@ -13,8 +13,8 @@ namespace LearningProgram.Solutions
     {
         static void Main(string[] args)
         {
-            Solution.Countdown(10);
-            // Start on Level 13 of the book
+            Solution.HuntingTheManticore();
+            // Start on Part 2 of the book
         }
     }
 }
