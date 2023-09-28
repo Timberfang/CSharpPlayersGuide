@@ -13,7 +13,7 @@ namespace LearningProgram.Solutions
     {
         static void Main(string[] args)
         {
-            Solution.TheLawsOfFreach();
+            Solution.Countdown(10);
             // Start on Level 13 of the book
         }
     }
