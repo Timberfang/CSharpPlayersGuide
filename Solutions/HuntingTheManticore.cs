@@ -14,7 +14,7 @@ namespace LearningProgram.Solutions
         {
             // Start Player 1
             int BossDistance = AskForNumberWithLimits("Player 1, how far away from the city do you want to station the Manticore? ", 0, 100);
-            Console.Clear();
+            Console.Clear(); // Hide Player 1's input from Player 2 so they need to guess
 
             // Start Player 2
             int RoundNumber = 1;
@@ -35,8 +35,8 @@ namespace LearningProgram.Solutions
 
                 // Fire Cannon
                 int Guess = AskForNumberWithLimits("Enter desired cannon range: ", 0, 100);
-                int RoundDamage = AimWeapon(Guess, BossDistance, PotentialDamage);
-                if (RoundDamage > 0) { ManticoreHP -= RoundDamage; }
+                int RoundDamage = AimWeapon(Guess, BossDistance, PotentialDamage); // AimWeapon returns zero if the guess was wrong
+                if (RoundDamage > 0) { ManticoreHP -= RoundDamage; } // Damage Manticore if the guess was correct
                 if (ManticoreHP > 0) { CityHP--; } // Manticore attacks
 
                 // Check for game end
@@ -50,7 +50,7 @@ namespace LearningProgram.Solutions
                 else { Console.WriteLine("A victory, but at what cost? The Manticore is down, but our city..."); } // Both the city and the Manticore are at zero HP, and both sides lose
                 Console.ForegroundColor = ConsoleColor.White;
             }
-            while (ManticoreHP > 0 && CityHP > 0);
+            while (ManticoreHP > 0 && CityHP > 0); // Stop if either side has zero HP remaining
         }
         public static int AskForNumberWithLimits(string text, int min, int max)
         {
@@ -60,7 +60,7 @@ namespace LearningProgram.Solutions
             {
                 Console.Write(text);
                 string choice = Console.ReadLine() ?? "No Input";
-                if (!(int.TryParse(choice, out output)))
+                if (!(int.TryParse(choice, out output))) // Validate input
                 {
                     if (choice == "No Input") { Console.WriteLine("No input detected! Please try again"); }
                     else { Console.WriteLine($"{choice} is not a number! Please try again."); }
@@ -68,11 +68,11 @@ namespace LearningProgram.Solutions
                 switch (output)
                 {
                     case int n when n > max:
-                        Console.WriteLine($"{output} is too high! Please try again.");
+                        Console.WriteLine($"{output} is too high! Please try again."); // Input is over the maximum
                         ValidChoice = false;
                         break;
                     case int n when n < min:
-                        Console.WriteLine($"{output} is too low! Please try again.");
+                        Console.WriteLine($"{output} is too low! Please try again."); // Input is under the minimum
                         ValidChoice = false;
                         break;
                     default:
@@ -80,7 +80,7 @@ namespace LearningProgram.Solutions
                         break;
                 }
             }
-            while (!ValidChoice);
+            while (!ValidChoice); // Stop when input is valid
             return output;
         }
         public static int WeaponDamage(int Cycle)
@@ -106,12 +106,12 @@ namespace LearningProgram.Solutions
         {
             switch (target.CompareTo(input))
             {
-                case 1:
+                case 1: // Less than target
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("That round FELL SHORT of the target.");
                     Console.ForegroundColor = ConsoleColor.White;
                     return 0;
-                case -1:
+                case -1: // Greater than target
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("That round OVERSHOT the target.");
                     Console.ForegroundColor = ConsoleColor.White;
