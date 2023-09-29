@@ -35,29 +35,8 @@ namespace LearningProgram.Solutions
 
                 // Fire Cannon
                 int Guess = AskForNumberWithLimits("Enter desired cannon range: ", 0, 100);
-                string ShotAccuracy = GuessNumber(Guess, BossDistance);
-                switch (ShotAccuracy)
-                {
-                    case "under":
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("That round FELL SHORT of the target.");
-                        Console.ForegroundColor = ConsoleColor.White;
-                        break;
-                    case "over":
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("That round OVERSHOT the target.");
-                        Console.ForegroundColor = ConsoleColor.White;
-                        break;
-                    case "correct":
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("That round was a DIRECT HIT!");
-                        Console.ForegroundColor = ConsoleColor.White;
-                        ManticoreHP = (ManticoreHP - PotentialDamage);
-                        break;
-                    case "error":
-                        Console.WriteLine("Error: Invalid input. This message should never appear, and if you see it, please pass this on to the creator of the game.");
-                        break;
-                }
+                int RoundDamage = AimWeapon(Guess, BossDistance, PotentialDamage);
+                if (RoundDamage > 0) { ManticoreHP -= RoundDamage; }
                 if (ManticoreHP > 0) { CityHP--; } // Manticore attacks
 
                 // Check for game end
@@ -75,15 +54,16 @@ namespace LearningProgram.Solutions
         }
         public static int AskForNumberWithLimits(string text, int min, int max)
         {
-            bool ValidChoice = false;
+            bool ValidChoice;
             int output;
             do
             {
-                Console.WriteLine(text);
-                string choice = Console.ReadLine();
+                Console.Write(text);
+                string choice = Console.ReadLine() ?? "No Input";
                 if (!(int.TryParse(choice, out output)))
                 {
-                    Console.WriteLine($"{choice} is not a number! Please try again.");
+                    if (choice == "No Input") { Console.WriteLine("No input detected! Please try again"); }
+                    else { Console.WriteLine($"{choice} is not a number! Please try again."); }
                 }
                 switch (output)
                 {
@@ -122,23 +102,25 @@ namespace LearningProgram.Solutions
 
             return Damage;
         }
-        public static string GuessNumber(int input, int target)
+        public static int AimWeapon(int input, int target, int damage)
         {
-            string Result;
             switch (target.CompareTo(input))
             {
                 case 1:
-                    Result = "under";
-                    return Result;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("That round FELL SHORT of the target.");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    return 0;
                 case -1:
-                    Result = "over";
-                    return Result;
-                case 0:
-                    Result = "correct";
-                    return Result;
-                default:
-                    Result = "error";
-                    return Result;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("That round OVERSHOT the target.");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    return 0;
+                default: // If not less than target or greater than target, must be equal to target, thus a hit.
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("That round was a DIRECT HIT!");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    return damage;
             }
         }
     }
