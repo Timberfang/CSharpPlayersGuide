@@ -14,8 +14,7 @@ namespace LearningProgram.Solutions
             LockState currentstate = LockState.Locked;
             while (true)
             {
-                Console.Write($"The chest is {currentstate}. What do you want to do? ");
-                string action = Console.ReadLine();
+                string action = AskForString($"The chest is {currentstate}. What do you want to do? ");
 
                 if (action == "open" && currentstate == LockState.Closed) { currentstate = LockState.Open; }        // Player can open the chest if it is closed, but not locked
                 if (action == "close" && currentstate == LockState.Open) { currentstate = LockState.Closed; }       // Player can close the chest if it is opened

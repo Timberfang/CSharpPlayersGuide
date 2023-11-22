@@ -13,7 +13,7 @@ namespace LearningProgram.Solutions
         public static void HuntingTheManticore(int CityHP = 15, int ManticoreHP = 10)
         {
             // Start Player 1
-            int BossDistance = AskForNumberWithLimits("Player 1, how far away from the city do you want to station the Manticore? ", 0, 100);
+            int BossDistance = AskForNumber("Player 1, how far away from the city do you want to station the Manticore? ", 0, 100);
             Console.Clear(); // Hide Player 1's input from Player 2 so they need to guess
 
             // Start Player 2
@@ -34,7 +34,7 @@ namespace LearningProgram.Solutions
                 Console.ForegroundColor = ConsoleColor.White;
 
                 // Fire Cannon
-                int Guess = AskForNumberWithLimits("Enter desired cannon range: ", 0, 100);
+                int Guess = AskForNumber("Enter desired cannon range: ", 0, 100);
                 int RoundDamage = AimWeapon(Guess, BossDistance, PotentialDamage); // AimWeapon returns zero if the guess was wrong
                 if (RoundDamage > 0) { ManticoreHP -= RoundDamage; } // Damage Manticore if the guess was correct
                 if (ManticoreHP > 0) { CityHP--; } // Manticore attacks
@@ -51,37 +51,6 @@ namespace LearningProgram.Solutions
                 Console.ForegroundColor = ConsoleColor.White;
             }
             while (ManticoreHP > 0 && CityHP > 0); // Stop if either side has zero HP remaining
-        }
-        public static int AskForNumberWithLimits(string text, int min, int max)
-        {
-            bool ValidChoice;
-            int output;
-            do
-            {
-                Console.Write(text);
-                string choice = Console.ReadLine() ?? "No Input";
-                if (!(int.TryParse(choice, out output))) // Validate input
-                {
-                    if (choice == "No Input") { Console.WriteLine("No input detected! Please try again"); }
-                    else { Console.WriteLine($"{choice} is not a number! Please try again."); }
-                }
-                switch (output)
-                {
-                    case int n when n > max:
-                        Console.WriteLine($"{output} is too high! Please try again."); // Input is over the maximum
-                        ValidChoice = false;
-                        break;
-                    case int n when n < min:
-                        Console.WriteLine($"{output} is too low! Please try again."); // Input is under the minimum
-                        ValidChoice = false;
-                        break;
-                    default:
-                        ValidChoice = true;
-                        break;
-                }
-            }
-            while (!ValidChoice); // Stop when input is valid
-            return output;
         }
         public static int WeaponDamage(int Cycle)
         {

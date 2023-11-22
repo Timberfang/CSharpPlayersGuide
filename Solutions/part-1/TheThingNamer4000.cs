@@ -17,13 +17,5 @@ namespace LearningProgram.Solutions
             string d = "4000"; // add "3000".
             Console.WriteLine("The " + b + " " + a + " of " + c + " " + d + "!"); // "of" is already included, so it was removed from "c".
         }
-
-        public static string AskForString(string text)
-        {
-            Console.WriteLine(text);
-            string output = Console.ReadLine();
-            if (output != null) { return  output; }
-            else { return null; }
-        }
     }
 }
