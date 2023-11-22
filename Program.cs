@@ -13,8 +13,8 @@ namespace LearningProgram.Solutions
     {
         static void Main(string[] args)
         {
-            Solution.SimulasTest();
-            // Start on Level 17 of the book
+            Solution.SimulasSoup();
+            // Start on Level 18 of the book
         }
     }
 }
