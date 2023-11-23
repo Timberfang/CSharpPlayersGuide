@@ -8,12 +8,26 @@ namespace LearningProgram.Solutions
 {
     public partial class Solution // This file is used for functions used across the project - functions used in a single challenge are contained in that challenge's file.
     {
-        public static string AskForString(string text)
+        public static string AskForString(string text, bool warn = true, string warning = "No input detected. Please try again!")
         {
-            Console.WriteLine(text);
-            string output = Console.ReadLine();
-            if (output != null) { return output; }
-            else { return null; }
+            bool ValidOutput = false;
+            while (true)
+            {
+                Console.Write(text);
+                string output = Console.ReadLine();
+                if (!String.IsNullOrEmpty(output)) // input was given, so return the input
+                {
+                    return output;
+                }
+                else if (warn) // no input given and warn was set to true, so repeat the loop until input is given
+                {
+                    Console.WriteLine(warning);
+                }
+                else // no input given, but warn was set to false, so this is accepted
+                {
+                    return null;
+                }
+            }
         }
 
         public static int AskForNumber(string text, int min = int.MinValue, int max = int.MaxValue) // Only test against minimums or maximums if specified
@@ -23,10 +37,10 @@ namespace LearningProgram.Solutions
             do
             {
                 Console.Write(text);
-                string choice = Console.ReadLine() ?? "No Input";
+                string choice = Console.ReadLine();
                 if (!(int.TryParse(choice, out output))) // Validate input
                 {
-                    if (choice == "No Input") { Console.WriteLine("No input detected! Please try again"); }
+                    if (string.IsNullOrEmpty(choice)) { Console.WriteLine("No input detected! Please try again"); }
                     else { Console.WriteLine($"{choice} is not a number! Please try again."); }
                 }
                 switch (output)

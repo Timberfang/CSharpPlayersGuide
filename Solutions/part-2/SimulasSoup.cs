@@ -25,25 +25,21 @@ namespace LearningProgram.Solutions
             {
                 UserChoice = AskForString($"{FoodType.Soup}, {FoodType.Stew}, or {FoodType.Gumbo}");
 
-                if (!String.IsNullOrEmpty(UserChoice))
+                switch (UserChoice.ToLower())
                 {
-                    switch (UserChoice.ToLower())
-                    {
-                        case "soup":
-                            FoodChoice = FoodType.Soup;
-                            break;
-                        case "stew":
-                            FoodChoice = FoodType.Stew;
-                            break;
-                        case "gumbo":
-                            FoodChoice = FoodType.Gumbo;
-                            break;
-                        default:
-                            Console.WriteLine("Sorry, please choose from the options given: ");
-                            break;
-                    }
+                    case "soup":
+                        FoodChoice = FoodType.Soup;
+                        break;
+                    case "stew":
+                        FoodChoice = FoodType.Stew;
+                        break;
+                    case "gumbo":
+                        FoodChoice = FoodType.Gumbo;
+                        break;
+                    default:
+                        Console.WriteLine("Sorry, please choose from the options given: ");
+                        break;
                 }
-                else { Console.WriteLine("No input detected. Please try again!"); }
             }
 
             Console.WriteLine("Main Ingredient - Choose One!");
@@ -51,28 +47,24 @@ namespace LearningProgram.Solutions
             {
                 UserChoice = AskForString($"{MainIngredient.Mushrooms}, {MainIngredient.Chicken}, {MainIngredient.Carrots} or {MainIngredient.Potatoes}");
 
-                if (!String.IsNullOrEmpty(UserChoice))
+                switch (UserChoice.ToLower())
                 {
-                    switch (UserChoice.ToLower())
-                    {
-                        case "mushrooms":
-                            IngredientChoice = MainIngredient.Mushrooms;
-                            break;
-                        case "chicken":
-                            IngredientChoice = MainIngredient.Chicken;
-                            break;
-                        case "carrots":
-                            IngredientChoice = MainIngredient.Carrots;
-                            break;
-                        case "potatoes":
-                            IngredientChoice = MainIngredient.Potatoes;
-                            break;
-                        default:
-                            Console.WriteLine("Sorry, please choose from the options given: ");
-                            break;
-                    }
+                    case "mushrooms":
+                        IngredientChoice = MainIngredient.Mushrooms;
+                        break;
+                    case "chicken":
+                        IngredientChoice = MainIngredient.Chicken;
+                        break;
+                    case "carrots":
+                        IngredientChoice = MainIngredient.Carrots;
+                        break;
+                    case "potatoes":
+                        IngredientChoice = MainIngredient.Potatoes;
+                        break;
+                    default:
+                        Console.WriteLine("Sorry, please choose from the options given: ");
+                        break;
                 }
-                else { Console.WriteLine("No input detected. Please try again!"); }
             }
 
             Console.WriteLine("Seasoning - Choose One!");
