@@ -36,8 +36,8 @@ This is a list of the challenges in the book, along with their XP in (parenthese
 
 - [x] Knowledge Check - Objects (25)
 - [x] Simula's Test (100)
-- [ ] Simula's Soups (100)
-- [ ] Vin Fletcher's Arrows (100)
+- [x] Simula's Soups (100)
+- [x] Vin Fletcher's Arrows (100)
 - [ ] Vin's trouble (50)
 - [ ] The Properties of Arrows (100)
 - [ ] Arrow Factories (100)
