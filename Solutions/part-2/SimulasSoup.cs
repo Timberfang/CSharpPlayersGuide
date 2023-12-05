@@ -23,7 +23,7 @@ namespace LearningProgram.Solutions
             Console.WriteLine("Food Type - Choose One!");
             while (FoodChoice == FoodType.None)
             {
-                UserChoice = AskForString($"{FoodType.Soup}, {FoodType.Stew}, or {FoodType.Gumbo}");
+                UserChoice = Toolbox.AskForString($"{FoodType.Soup}, {FoodType.Stew}, or {FoodType.Gumbo}");
 
                 switch (UserChoice.ToLower())
                 {
@@ -45,7 +45,7 @@ namespace LearningProgram.Solutions
             Console.WriteLine("Main Ingredient - Choose One!");
             while (IngredientChoice == MainIngredient.None)
             {
-                UserChoice = AskForString($"{MainIngredient.Mushrooms}, {MainIngredient.Chicken}, {MainIngredient.Carrots} or {MainIngredient.Potatoes}");
+                UserChoice = Toolbox.AskForString($"{MainIngredient.Mushrooms}, {MainIngredient.Chicken}, {MainIngredient.Carrots} or {MainIngredient.Potatoes}");
 
                 switch (UserChoice.ToLower())
                 {
@@ -70,7 +70,7 @@ namespace LearningProgram.Solutions
             Console.WriteLine("Seasoning - Choose One!");
             while (SeasoningChoice == Seasoning.None)
             {
-                UserChoice = AskForString($"{Seasoning.Spicy}, {Seasoning.Salty}, or {Seasoning.Sweet}");
+                UserChoice = Toolbox.AskForString($"{Seasoning.Spicy}, {Seasoning.Salty}, or {Seasoning.Sweet}");
 
                 if (!String.IsNullOrEmpty(UserChoice))
                 {

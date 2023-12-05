@@ -13,8 +13,8 @@ namespace LearningProgram.Solutions
     {
         static void Main(string[] args)
         {
-            Solution.VinsTrouble();
-            // Start on Level 20 of the book
+            Level20.VinsTrouble();
+            // Start on Level 21 of the book
         }
     }
 }

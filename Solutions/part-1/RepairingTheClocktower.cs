@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LearningProgram.Solutions
 {
-    public class Level9
+    public partial class Level9
     {
         public static void RepairingTheClocktower()
         {
