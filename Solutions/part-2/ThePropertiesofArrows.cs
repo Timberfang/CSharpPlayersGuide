@@ -61,13 +61,9 @@ namespace LearningProgram.Solutions
 
         class Arrow
         {
-            private int ArrowShaft;
-            private Head ArrowHead;
-            private Fletching ArrowFletching;
-
-            public int GetShaftLength() { return ArrowShaft; }
-            public Head GetHeadType() { return ArrowHead; }
-            public Fletching GetFletchingType() { return ArrowFletching; }
+            public int ArrowShaft { get; }
+            public Head ArrowHead { get; }
+            public Fletching ArrowFletching { get; }
 
             public float GetCost()
             {
