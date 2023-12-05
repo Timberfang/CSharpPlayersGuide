@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LearningProgram.Solutions
 {
-    public partial class Solution // This file is used for functions used across the project - functions used in a single challenge are contained in that challenge's file.
+    public class Toolbox // This file is used for functions used across the project - functions used in a single challenge are contained in that challenge's file.
     {
         public static string AskForString(string text, bool warn = true, string warning = "No input detected. Please try again!")
         {

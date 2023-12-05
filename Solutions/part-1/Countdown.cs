@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LearningProgram.Solutions
 {
-    public partial class Solution
+    public partial class Level13
     {
         public static void Countdown(int x)
         {

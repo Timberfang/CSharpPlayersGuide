@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LearningProgram.Solutions
 {
-    public partial class Solution
+    public class Level10
     {
         public static void BuyingInventory()
         {

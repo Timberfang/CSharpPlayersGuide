@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace LearningProgram.Solutions
 {
-    public class Level19
+    public class Level20
     {
-        public static void VinsTrouble() // Used for level 19
+        public static void VinsTrouble()
         {
             Head HeadType = Head.None; // Intialize for later use
             Fletching FletchingType = Fletching.None; // Intialize for later use
@@ -54,25 +54,25 @@ namespace LearningProgram.Solutions
                 }
             }
 
-            Arrow ChosenArrow = new Arrow(ShaftLength,HeadType,FletchingType);
+            Arrow ChosenArrow = new Arrow(ShaftLength, HeadType, FletchingType);
             float ChosenArrowCost = ChosenArrow.GetCost();
             Console.WriteLine($"Wonderful! Your cost for today will be {ChosenArrowCost} gold. Please come again!");
         }
 
         class Arrow
         {
-            private int NewArrowShaft;
-            private Head NewArrowHead;
-            private Fletching NewArrowFletching;
+            private int ArrowShaft;
+            private Head ArrowHead;
+            private Fletching ArrowFletching;
 
-            public int GetShaftLength() { return NewArrowShaft; }
-            public Head GetHeadType() { return NewArrowHead; }
-            public Fletching GetFletchingType() { return NewArrowFletching; }
+            public int GetShaftLength() { return ArrowShaft; }
+            public Head GetHeadType() { return ArrowHead; }
+            public Fletching GetFletchingType() { return ArrowFletching; }
 
             public float GetCost()
             {
-                float cost = (float)(NewArrowShaft * 0.05);
-                switch (NewArrowHead)
+                float cost = (float)(ArrowShaft * 0.05);
+                switch (ArrowHead)
                 {
                     case Head.Steel:
                         cost += 10;
@@ -84,7 +84,7 @@ namespace LearningProgram.Solutions
                         cost += 5;
                         break;
                 }
-                switch (NewArrowFletching)
+                switch (ArrowFletching)
                 {
                     case Fletching.Plastic:
                         cost += 10;
@@ -102,9 +102,9 @@ namespace LearningProgram.Solutions
 
             public Arrow(int ShaftLength, Head HeadType, Fletching FletchingType)
             {
-                this.NewArrowShaft = ShaftLength;
-                this.NewArrowHead = HeadType;
-                this.NewArrowFletching = FletchingType;
+                this.ArrowShaft = ShaftLength;
+                this.ArrowHead = HeadType;
+                this.ArrowFletching = FletchingType;
             }
         }
 

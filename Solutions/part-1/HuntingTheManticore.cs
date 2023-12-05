@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace LearningProgram.Solutions
 {
-    public partial class Solution
+    public class Level14
     {
         public static void HuntingTheManticore(int CityHP = 15, int ManticoreHP = 10)
         {
             // Start Player 1
-            int BossDistance = AskForNumber("Player 1, how far away from the city do you want to station the Manticore? ", 0, 100);
+            int BossDistance = Toolbox.AskForNumber("Player 1, how far away from the city do you want to station the Manticore? ", 0, 100);
             Console.Clear(); // Hide Player 1's input from Player 2 so they need to guess
 
             // Start Player 2
@@ -34,7 +34,7 @@ namespace LearningProgram.Solutions
                 Console.ForegroundColor = ConsoleColor.White;
 
                 // Fire Cannon
-                int Guess = AskForNumber("Enter desired cannon range: ", 0, 100);
+                int Guess = Toolbox.AskForNumber("Enter desired cannon range: ", 0, 100);
                 int RoundDamage = AimWeapon(Guess, BossDistance, PotentialDamage); // AimWeapon returns zero if the guess was wrong
                 if (RoundDamage > 0) { ManticoreHP -= RoundDamage; } // Damage Manticore if the guess was correct
                 if (ManticoreHP > 0) { CityHP--; } // Manticore attacks

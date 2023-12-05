@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace LearningProgram.Solutions
 {
-    public partial class Solution
+    public class Level18
     {
         public static void VinFletchersArrows()
         {
             Head HeadType = Head.None; // Intialize for later use
             Fletching FletchingType = Fletching.None; // Intialize for later use
 
-            int ShaftLength = AskForNumber("Please choose a length between 60 cm and 100 cm. It costs 0.05 gold per centimeter: ", 60, 100); // AskForNumber has built-in validation, so this is used instead of something here
-            string ChosenHead = AskForString("Next, choose a head type: Steel (10 gold), Wood (3 gold), or Obsidian (5 gold): ");
+            int ShaftLength = Toolbox.AskForNumber("Please choose a length between 60 cm and 100 cm. It costs 0.05 gold per centimeter: ", 60, 100); // AskForNumber has built-in validation, so this is used instead of something here
+            string ChosenHead = Toolbox.AskForString("Next, choose a head type: Steel (10 gold), Wood (3 gold), or Obsidian (5 gold): ");
             while (HeadType == Head.None)
             {
                 switch (ChosenHead.ToLower())
@@ -34,7 +34,7 @@ namespace LearningProgram.Solutions
                 }
             }
 
-            string ChosenFletching = AskForString("Lastly, choose your fletching: Plastic (10 gold), Turkey Feathers (5 gold), or Goose Feathers (3 gold): ");
+            string ChosenFletching = Toolbox.AskForString("Lastly, choose your fletching: Plastic (10 gold), Turkey Feathers (5 gold), or Goose Feathers (3 gold): ");
             while (FletchingType == Fletching.None)
             {
                 switch (ChosenFletching.ToLower())
@@ -102,8 +102,8 @@ namespace LearningProgram.Solutions
                 this.ArrowFletching = FletchingType;
             }
         }
-    }
 
-    public enum Head { Steel, Wood, Obsidian, None }
-    public enum Fletching { Plastic, Turkey, Goose, None }
+        public enum Head { Steel, Wood, Obsidian, None }
+        public enum Fletching { Plastic, Turkey, Goose, None }
+    }
 }

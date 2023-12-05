@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LearningProgram.Solutions
 {
-    public partial class Solution
+    public partial class Level3
     {
         public static void ConsolasAndTelim()
         {

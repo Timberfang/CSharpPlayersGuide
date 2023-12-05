@@ -7,14 +7,14 @@ using LearningProgram.Solutions;
 
 namespace LearningProgram.Solutions
 {
-    public partial class Solution
+    public class Level16
     {
         public static void SimulasTest()
         {
             LockState currentstate = LockState.Locked;
             while (true)
             {
-                string action = AskForString($"The chest is {currentstate}. What do you want to do? ");
+                string action = Toolbox.AskForString($"The chest is {currentstate}. What do you want to do? ");
 
                 if (action == "open" && currentstate == LockState.Closed) { currentstate = LockState.Open; }        // Player can open the chest if it is closed, but not locked
                 if (action == "close" && currentstate == LockState.Open) { currentstate = LockState.Closed; }       // Player can close the chest if it is opened

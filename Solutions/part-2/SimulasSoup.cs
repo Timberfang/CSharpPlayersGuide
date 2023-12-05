@@ -7,7 +7,7 @@ using LearningProgram.Solutions;
 
 namespace LearningProgram.Solutions
 {
-    public partial class Solution
+    public class Level17
     {
         public static void SimulasSoup()
         {
