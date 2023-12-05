@@ -61,18 +61,18 @@ namespace LearningProgram.Solutions
 
         class Arrow
         {
-            private int NewArrowShaft;
-            private Head NewArrowHead;
-            private Fletching NewArrowFletching;
+            private int ArrowShaft;
+            private Head Arrowhead;
+            private Fletching ArrowFletching;
 
-            public int GetShaftLength() { return NewArrowShaft; }
-            public Head GetHeadType() { return NewArrowHead; }
-            public Fletching GetFletchingType() { return NewArrowFletching; }
+            public int GetShaftLength() { return ArrowShaft; }
+            public Head GetHeadType() { return Arrowhead; }
+            public Fletching GetFletchingType() { return ArrowFletching; }
 
             public float GetCost()
             {
-                float cost = (float)(NewArrowShaft * 0.05);
-                switch (NewArrowHead)
+                float cost = (float)(ArrowShaft * 0.05);
+                switch (Arrowhead)
                 {
                     case Head.Steel:
                         cost += 10;
@@ -84,7 +84,7 @@ namespace LearningProgram.Solutions
                         cost += 5;
                         break;
                 }
-                switch (NewArrowFletching)
+                switch (ArrowFletching)
                 {
                     case Fletching.Plastic:
                         cost += 10;
@@ -102,9 +102,9 @@ namespace LearningProgram.Solutions
 
             public Arrow(int ShaftLength, Head HeadType, Fletching FletchingType)
             {
-                this.NewArrowShaft = ShaftLength;
-                this.NewArrowHead = HeadType;
-                this.NewArrowFletching = FletchingType;
+                this.ArrowShaft = ShaftLength;
+                this.Arrowhead = HeadType;
+                this.ArrowFletching = FletchingType;
             }
         }
 
