@@ -13,8 +13,8 @@ namespace LearningProgram.Solutions
     {
         static void Main(string[] args)
         {
-            Level21.ArrowFactories();
-            // Start on Level 22 of the book
+            Level24.TheCard();
+            // Start on Level 25 of the book
         }
     }
 }
