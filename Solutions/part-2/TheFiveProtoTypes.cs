@@ -87,6 +87,89 @@ namespace LearningProgram.Solutions
             }
         }
 
+        public class Door
+        {
+            private DoorStatus CurrentState { get; set; }
+            private int Passcode { get; set; }
+
+
+            public Door(int Passcode)
+            {
+                this.CurrentState = DoorStatus.Locked;
+                this.Passcode = Passcode;
+            }
+
+            public DoorStatus GetState()
+            {
+                return this.CurrentState;
+            }
+            public void ChangePasscode(int CurrentCode, int NewCode)
+            {
+                if (this.Passcode == CurrentCode)
+                {
+                    this.Passcode = NewCode;
+                    Console.WriteLine("Passcode changed.");
+                }
+                else
+                {
+                    Console.WriteLine("Error: Input for current passcode does not match stored code!");
+                }
+            }
+
+            public void UnlockDoor(int Passcode)
+            {
+                if (this.Passcode == Passcode)
+                {
+                    this.CurrentState = DoorStatus.Closed;
+                    Console.WriteLine("Door unlocked");
+                }
+                else
+                {
+                    Console.WriteLine("Error: Input for current passcode does not match stored code!");
+                }
+            }
+            public void LockDoor()
+            {
+                switch (this.CurrentState)
+                {
+                    case DoorStatus.Closed:
+                        this.CurrentState = DoorStatus.Locked;
+                        Console.WriteLine("Door locked");
+                        break;
+                    case DoorStatus.Locked:
+                        Console.WriteLine("Error: The door is already locked!");
+                        break;
+                    case DoorStatus.Open:
+                        Console.WriteLine("Error: The door is still open! Please close it first.");
+                        break;
+                    default:
+                        Console.WriteLine("Error: Something weird is going on. If you see this, please contact the developer.");
+                        break;
+                }
+            }
+            public void OpenDoor()
+            {
+                switch (this.CurrentState)
+                {
+                    case DoorStatus.Closed:
+                        this.CurrentState = DoorStatus.Open;
+                        Console.WriteLine("Door opened.");
+                        break;
+                    case DoorStatus.Open:
+                        Console.WriteLine("Error: The door is already open");
+                        break;
+                    case DoorStatus.Locked:
+                        Console.WriteLine("Error: The door is locked! Please open it first.");
+                        break;
+                    default:
+                        Console.WriteLine("Error: Something weird is going on. If you see this, please contact the developer.");
+                        break;
+                }
+            }
+
+            public enum DoorStatus { Open, Closed, Locked }
+        }
+
         public enum CardColor { Red, Green, Blue, Yellow }
         public enum CardRank { One, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Dollar, Percent, Carrot, Ampersand }
     }
