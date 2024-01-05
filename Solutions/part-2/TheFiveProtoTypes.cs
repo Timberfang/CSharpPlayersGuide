@@ -2,7 +2,7 @@ using System.Reflection.Metadata;
 
 namespace LearningProgram.Solutions
 {
-    public class Level24
+    public partial class Level24
     {
         public static void ThePoint()
         {

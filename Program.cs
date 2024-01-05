@@ -13,7 +13,7 @@ namespace LearningProgram.Solutions
     {
         static void Main(string[] args)
         {
-            Level24.ThePasswordValidator();
+            Level24.TicTacToe();
             // Start on Level 25 of the book
         }
     }
