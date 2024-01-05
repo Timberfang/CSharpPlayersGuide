@@ -13,7 +13,7 @@ namespace LearningProgram.Solutions
     {
         static void Main(string[] args)
         {
-            Level24.TheCard();
+            Level24.TheLockedDoor();
             // Start on Level 25 of the book
         }
     }

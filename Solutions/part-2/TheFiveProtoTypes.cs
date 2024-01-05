@@ -28,6 +28,45 @@ namespace LearningProgram.Solutions
             }
         }
 
+        public static void TheLockedDoor()
+        {
+            int Passcode = Toolbox.AskForNumber("Please enter your initial passcode: ");
+            Door CurrentDoor = new Door(Passcode);
+            while (true)
+            {
+                string UserChoice = Toolbox.AskForString($"Choose an action: 'Close' the door, 'Open' the door, 'Lock' the door', 'Unlock' the door, 'Check' the door status, or 'Change' the passkey.");
+
+                switch (UserChoice.ToLower())
+                {
+                    case "close":
+                        CurrentDoor.CloseDoor();
+                        break;
+                    case "open":
+                        CurrentDoor.OpenDoor();
+                        break;
+                    case "lock":
+                        CurrentDoor.LockDoor();
+                        break;
+                    case "unlock":
+                        int InputCode = Toolbox.AskForNumber("Please enter your passcode: ");
+                        CurrentDoor.UnlockDoor(InputCode);
+                        break;
+                    case "change":
+                        int CurrentCode = Toolbox.AskForNumber("Please enter your current passcode: ");
+                        int NewCode = Toolbox.AskForNumber("Please enter your new passcode: ");
+                        CurrentDoor.ChangePasscode(CurrentCode, NewCode);
+                        break;
+                    case "check":
+                        DoorStatus CurrentState = CurrentDoor.GetState();
+                        Console.WriteLine($"The door is currently in state: {CurrentState}");
+                        break;
+                    default:
+                        Console.WriteLine("Sorry? I didn't quite catch that. Can you pick something from the list for me?");
+                        break;
+                }
+            }
+        }
+
         class Point
         {
             public int XCoord { get; }
@@ -87,7 +126,7 @@ namespace LearningProgram.Solutions
             }
         }
 
-        public class Door
+        class Door
         {
             private DoorStatus CurrentState { get; set; }
             private int Passcode { get; set; }
@@ -103,6 +142,7 @@ namespace LearningProgram.Solutions
             {
                 return this.CurrentState;
             }
+
             public void ChangePasscode(int CurrentCode, int NewCode)
             {
                 if (this.Passcode == CurrentCode)
@@ -118,14 +158,29 @@ namespace LearningProgram.Solutions
 
             public void UnlockDoor(int Passcode)
             {
-                if (this.Passcode == Passcode)
+                switch (this.CurrentState)
                 {
-                    this.CurrentState = DoorStatus.Closed;
-                    Console.WriteLine("Door unlocked");
-                }
-                else
-                {
-                    Console.WriteLine("Error: Input for current passcode does not match stored code!");
+                    case DoorStatus.Locked:
+                        if (this.Passcode == Passcode)
+                        {
+                            this.CurrentState = DoorStatus.Closed;
+                            Console.WriteLine("Door unlocked");
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Error: Input for current passcode does not match stored code!");
+                            break;
+                        }
+                    case DoorStatus.Closed:
+                        Console.WriteLine("Error: The door is already unlocked!");
+                        break;
+                    case DoorStatus.Open:
+                        Console.WriteLine("Error: The door is already open!");
+                        break;
+                    default:
+                        Console.WriteLine("Error: Something weird is going on. If you see this, please contact the developer.");
+                        break;
                 }
             }
             public void LockDoor()
@@ -166,11 +221,29 @@ namespace LearningProgram.Solutions
                         break;
                 }
             }
-
-            public enum DoorStatus { Open, Closed, Locked }
+            public void CloseDoor()
+            {
+                switch (this.CurrentState)
+                {
+                    case DoorStatus.Open:
+                        this.CurrentState = DoorStatus.Closed;
+                        Console.WriteLine("Door closed.");
+                        break;
+                    case DoorStatus.Closed:
+                        Console.WriteLine("Error: The door is already closed!");
+                        break;
+                    case DoorStatus.Locked:
+                        Console.WriteLine("Error: The door is already locked!");
+                        break;
+                    default:
+                        Console.WriteLine("Error: Something weird is going on. If you see this, please contact the developer.");
+                        break;
+                }
+            }
         }
 
         public enum CardColor { Red, Green, Blue, Yellow }
         public enum CardRank { One, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Dollar, Percent, Carrot, Ampersand }
+        public enum DoorStatus { Open, Closed, Locked }
     }
 }
