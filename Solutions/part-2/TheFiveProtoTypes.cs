@@ -1,3 +1,5 @@
+using System.Reflection.Metadata;
+
 namespace LearningProgram.Solutions
 {
     public class Level24
@@ -64,6 +66,16 @@ namespace LearningProgram.Solutions
                         Console.WriteLine("Sorry? I didn't quite catch that. Can you pick something from the list for me?");
                         break;
                 }
+            }
+        }
+
+        public static void ThePasswordValidator()
+        {
+            while (true)
+            {
+                PasswordValidator Password = new PasswordValidator(Toolbox.AskForString("Please enter the password to be tested: "));
+                if (Password.ValidPassword) { Console.WriteLine("Password is valid"); }
+                else { Console.WriteLine("Password is NOT valid."); }
             }
         }
 
@@ -238,6 +250,98 @@ namespace LearningProgram.Solutions
                     default:
                         Console.WriteLine("Error: Something weird is going on. If you see this, please contact the developer.");
                         break;
+                }
+            }
+        }
+
+        class PasswordValidator
+        {
+            public string Password { get; set; }
+            public bool ValidPassword
+            {
+                get
+                {
+                    if (ContainsLower && ContainsUpper && ContainsNumber && !ContainsTChar && !ContainsAmpChar && ValidLength) { return true; }
+                    else { return false; }
+                }
+            }
+
+            public PasswordValidator(string Input)
+            {
+                this.Password = Input;
+            }
+
+            private bool ContainsLower
+            {
+                get
+                {
+                    bool CurrentValue = false;
+                    foreach (char letter in this.Password)
+                    {
+                        if (char.IsLower(letter)) { CurrentValue = true; }
+                    }
+                    return CurrentValue;
+                }
+            }
+
+            private bool ContainsUpper
+            {
+                get
+                {
+                    bool CurrentValue = false;
+                    foreach (char letter in this.Password)
+                    {
+                        if (char.IsUpper(letter)) { CurrentValue = true; }
+                    }
+                    return CurrentValue;
+                }
+            }
+
+            private bool ContainsNumber
+            {
+                get
+                {
+                    bool CurrentValue = false;
+                    foreach (char letter in this.Password)
+                    {
+                        if (char.IsNumber(letter)) { CurrentValue = true; }
+                    }
+                    return CurrentValue;
+                }
+            }
+
+            private bool ContainsTChar
+            {
+                get
+                {
+                    bool CurrentValue = false;
+                    foreach (char letter in this.Password)
+                    {
+                        if (letter == 'T') { CurrentValue = true; }
+                    }
+                    return CurrentValue;
+                }
+            }
+
+            private bool ContainsAmpChar
+            {
+                get
+                {
+                    bool CurrentValue = false;
+                    foreach (char letter in this.Password)
+                    {
+                        if (letter == '&') { CurrentValue = true; }
+                    }
+                    return CurrentValue;
+                }
+            }
+
+            private bool ValidLength
+            {
+                get
+                {
+                    if (this.Password.Length >= 6 && this.Password.Length <= 13) { return true; }
+                    else { return false; }
                 }
             }
         }
